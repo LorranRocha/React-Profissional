@@ -64,6 +64,30 @@
             padding: 8px;
             cursor: pointer;
         }
+
+        footer{
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2em;
+            margin-top: 12%;
+        }
+
+        footer i{
+            color: tomato;
+            font-size: bold;
+        }
+
+        footer a{
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer a:hover{
+            color: black;
+            transition: ease .6s;
+        }
     </style>
 
 </head>
@@ -79,89 +103,64 @@
      <!--Código fica aqui-->
      <script type="text/babel">
          const Header = () =>(
-                <div class="header">Calculadora - by: Lorran</div>
+                <div className="header">Calculadora Simples</div>
             )
          
+         const Button = (props) =>(
+            <button
+                onClick={() =>{
+                    props.onNumberClick(props.value);
+                }}  
+            >
+                {props.value}
+
+            </button>
+         )
 
          const Calculadora = () =>{
              const [display, setDisplay] = React.useState("");
              
+             const keyboard = [7,8,9,4,5,6,1,2,3,0];
+
+             const handlerNumberClick = (value) =>{
+                    setDisplay(`${display}${value}`);
+                }
 
             return(
-                <div class="calculator">
-                        <div class="display">
+                <div className="calculator">
+                        <div className="display">
                             {display}    
                         </div>
-                        <div class="keyboard">
-                            <button
-                                onClick={() =>{
-                                    setDisplay(display + "7");
-                                }}
-                            >7</button>
-                            <button
-                            onClick={() =>{
-                                    setDisplay(display + "8");
-                                }}
-                            >8</button>
-                            <button
-                            onClick={() =>{
-                                    setDisplay(display + "9");
-                                }}
-                            >9</button>
-                            <button
-                            onClick={() =>{
-                                    setDisplay(display + "4");
-                                }}
-                            >4</button>
-                            <button
-                            onClick={() =>{
-                                    setDisplay(display + "5");
-                                }}
-                            >5</button>
-                            <button
-                            onClick={() =>{
-                                    setDisplay(display + "6");
-                                }}
-                            >6</button>
-                            <button
-                            onClick={() =>{
-                                    setDisplay(display + "1");
-                                }}
-                            >1</button>
-                            <button
-                            onClick={() =>{
-                                    setDisplay(display + "2");
-                                }}
-                            >2</button>
-                            <button
-                            onClick={() =>{
-                                    setDisplay(display + "3");
-                                }}
-                            >3</button>
-                            <button
-                            onClick={() =>{
-                                    setDisplay(display + "0");
-                                }}
-                            >0</button>    
+                        <div className="keyboard">
+                            {keyboard.map(value => (
+                                <Button 
+                                key = {value}
+                                value={value}
+                                onNumberClick = {handlerNumberClick}
+                            />
+                            ))}
+                            
+                            
                         </div>
                     </div>    
              );
             }
+            
 
-         //const Footer =() =>{
-         //    (
-         //       <footer>
-         //           <p>Criado com <i class="fas fa-heart"></i> por <a href="https://www.lorranrocha.com/" target="_blank">Lorran Rocha</a> </p>    
-         //       </footer>
-         //    )
-         //}
+         const Footer =() =>
+             (
+                <footer>
+                    <p>Criado com <i className="fas fa-heart"></i> por <a href="https://www.lorranrocha.com/" target="_blank">Lorran Rocha</a> </p>    
+                </footer>
+             )
+         
         
          function App(){
              return(
                 <div>
                     <Header />
                     <Calculadora />
-                   
+                   <Footer />
                 </div>
              );
          }
