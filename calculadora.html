@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+    <!--Font Awesome Icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <style>
+
+        html{
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after{
+            box-sizing: inherit;
+        }
+
+        body{
+            margin: 0;
+            background-color: #121212;
+            font-family: sans-serif;
+        }
+
+        .header{
+            background-color: #333;
+            text-align: center;
+            color: #fff;
+            padding: 16px;
+            border-radius: 4px;
+        }
+
+        .calculator{
+            background-color: #fff;
+            margin: 40px auto;
+            max-width: 400px;
+            padding: 16px;
+            border-radius: 4px;
+        }
+
+        .display{
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1.2em;
+        }
+
+        .keyboard{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 16px;
+            font-size: 1.2em;
+            font: bold;
+            padding-top: 1.2em;
+        }
+
+        .keyboard button{
+            border: 0;
+            border-radius: 4px;
+            background-color: #efefef;
+            padding: 8px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="root"></div>
+
+     <!--Importa React-->
+     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+     <!--Importa Babel-->
+     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ 
+     <!--Código fica aqui-->
+     <script type="text/babel">
+         const Header = () =>(
+                <div class="header">Calculadora - by: Lorran</div>
+            )
+         
+
+         const Calculadora = () =>{
+             const [display, setDisplay] = React.useState("");
+             
+
+            return(
+                <div class="calculator">
+                        <div class="display">
+                            {display}    
+                        </div>
+                        <div class="keyboard">
+                            <button
+                                onClick={() =>{
+                                    setDisplay(display + "7");
+                                }}
+                            >7</button>
+                            <button
+                            onClick={() =>{
+                                    setDisplay(display + "8");
+                                }}
+                            >8</button>
+                            <button
+                            onClick={() =>{
+                                    setDisplay(display + "9");
+                                }}
+                            >9</button>
+                            <button
+                            onClick={() =>{
+                                    setDisplay(display + "4");
+                                }}
+                            >4</button>
+                            <button
+                            onClick={() =>{
+                                    setDisplay(display + "5");
+                                }}
+                            >5</button>
+                            <button
+                            onClick={() =>{
+                                    setDisplay(display + "6");
+                                }}
+                            >6</button>
+                            <button
+                            onClick={() =>{
+                                    setDisplay(display + "1");
+                                }}
+                            >1</button>
+                            <button
+                            onClick={() =>{
+                                    setDisplay(display + "2");
+                                }}
+                            >2</button>
+                            <button
+                            onClick={() =>{
+                                    setDisplay(display + "3");
+                                }}
+                            >3</button>
+                            <button
+                            onClick={() =>{
+                                    setDisplay(display + "0");
+                                }}
+                            >0</button>    
+                        </div>
+                    </div>    
+             );
+            }
+
+         //const Footer =() =>{
+         //    (
+         //       <footer>
+         //           <p>Criado com <i class="fas fa-heart"></i> por <a href="https://www.lorranrocha.com/" target="_blank">Lorran Rocha</a> </p>    
+         //       </footer>
+         //    )
+         //}
+        
+         function App(){
+             return(
+                <div>
+                    <Header />
+                    <Calculadora />
+                   
+                </div>
+             );
+         }
+
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById("root")
+        );
+
+     </script>
+</body>
+</html>
